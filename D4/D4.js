@@ -94,7 +94,9 @@ HINT: Module Operator
 */
 
 const check3and7 = function(num){
-    if (num % 3 === 0 && num % 7 === 0){
+    if (num < 0){
+        console.log("The number should be positive!!!")
+    } else if (num % 3 === 0 && num % 7 === 0){
         console.log(`The number ${num} is the multiplication of 3 and 7`)
     } else if (num % 3 === 0){
         console.log(`The number ${num} is the multiplication of 3`)
@@ -105,6 +107,7 @@ const check3and7 = function(num){
     }
 }
 
+check3and7(-2)
 check3and7(12)
 check3and7(14)
 check3and7(21)
@@ -131,15 +134,16 @@ Write a function "upperFirst" to capitalize the first letter of each word of a g
 
 /* WRITE YOUR CODE HERE */
 
-const upperFirst = function(string){
-   let stringSeparator = string.split(" ")
-   let arrCapitalizer =[]
-   for (let word of stringSeparator){
-       arrCapitalizer.push(word.charAt(0).toUpperCase() + word.substring(1))
+const upperFirst = function(str){
+   let stringSeparator = str.split(" ") // 1. Split the string into an array
+   let arrCapitalizer = [] // 2. Declare an empty array (for ".push"ing later)
+   for (let word of stringSeparator){ //3. make variables in this local scope from the array made from "str.split"
+       arrCapitalizer.push(word.charAt(0).toUpperCase() + word.substring(1)) // 4. push the specified formula into the empty array
    }
-   stringSeparator= arrCapitalizer.join(" ")
-   console.log(stringSeparator)
+   stringSeparator= arrCapitalizer.join(" ") // 5. Rejoining the pushed empty array
+   console.log(stringSeparator) // 6. Print out the modified "stringseperator"
 }
+ 
 upperFirst("there are no capital letter written in this param")
 
 /* EXERCISE 9
