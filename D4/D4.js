@@ -135,7 +135,7 @@ const upperFirst = function(string){
    let stringSeparator = string.split(" ")
    let arrCapitalizer =[]
    for (let word of stringSeparator){
-       arrCapitalizer.push( word.charAt(0).toUpperCase()+ word.substring(1))
+       arrCapitalizer.push(word.charAt(0).toUpperCase() + word.substring(1))
    }
    stringSeparator= arrCapitalizer.join(" ")
    console.log(stringSeparator)
