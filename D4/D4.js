@@ -133,7 +133,6 @@ Write a function "upperFirst" to capitalize the first letter of each word of a g
 
 const upperFirst = function(string){
    let stringSeparator = string.split(" ")
-   console.log(stringSeparator)
    let arrCapitalizer =[]
    for (let word of stringSeparator){
        arrCapitalizer.push( word.charAt(0).toUpperCase()+ word.substring(1))
@@ -162,10 +161,16 @@ Write a function "giveMeRandom" which accepts a number n and returns an array co
 /* WRITE YOUR CODE HERE */
 
 const giveMeRandom = function(num){
-    console.log(Math.floor(Math.random() * 11))
+    if (isNaN(num) === false){
+        console.log(Math.floor(Math.random() * 11))
+    } else {
+        console.log("The input is not a number!!!")
+    }
 }
 
-giveMeRandom(90)
+
+giveMeRandom(12121)
+giveMeRandom("Not a Number")
 
 /* WHEN YOU ARE FINISHED
 Commit and push the code to your personal GitHub repository and share the link to your commit in Eduflow.
