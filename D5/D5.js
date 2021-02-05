@@ -147,7 +147,7 @@ console.log(isThisAnEmail("this is obviously not an email adress"))
    Write the function whatDayIsIt that should return the current day of the week.
 */
 
-let day = new Date()
+const day = new Date()
 let today = function(){
     if (day.getDay() === 0){
         today = `Sunday`
@@ -196,9 +196,28 @@ today()
    Write the function howManyDays that receives a date and returns the number of days that has passed since that day.
 */
 
+let howManyDays = function(dateInput){
+    let datum = new Date(dateInput)
+    let daysPassed = day - datum
+    console.log(daysPassed)
+}
+
+howManyDays(2020/12/26)
+
 /* Ex.10
    Write the function isTodayMyBDay that returns true if it's your birthday, false otherwise.
 */
+
+const myBDay = new Date("02-05")
+let isTodayMyBDay = function(){
+    if (day == myBDay){
+        console.log(`Today is your Birthday!`)
+    } else {
+        console.log(`Nah, today's not your birthday...`)
+    }
+}
+
+isTodayMyBDay()
 
 // JS Arrays // Objs
 // NOTE: movies array is defined at the end of the file!
@@ -207,7 +226,9 @@ today()
    Write the function deleteProp that receives an object and a string, and returns the object after deleting the property with that given name.
 */
 
-const deleteProp
+// let deleteProp = function(obj, str){
+//     
+// }
 
 /* Ex.12 
     Write the function olderMovie that finds the older movie in the array.
@@ -216,6 +237,12 @@ const deleteProp
 /* Ex.13
     Write the function countMovies that returns the number of movies into the array.
 */
+
+// let countMovies = function(){
+//     let totalMovies = movies.length
+//     console.log(totalMovies)
+// }
+// countMovies()
 
 /* Ex.14
     Write the function onlyTitles that creates an array with only the titles of the movies.
