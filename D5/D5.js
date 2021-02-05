@@ -22,7 +22,8 @@ console.log(test)
     Create a variable sum that contains the result of the sum between 10 and 20.
 */
 
-//const sum = 10 + 20
+const sum = 10 + 20
+console.log(sum)
 
 /* Ex.C 
     Create a variable random that contains a random number between 0 and 20 (should be randomly created at each execution).
@@ -68,8 +69,8 @@ console.log(me)
     Write the function dice that randomize an integer number between 1 and 6.
 */
 
-const dice = function(num){
-    console.log(Math.floor(Math.random() * 7))
+const dice = function(){
+    console.log(Math.floor(Math.random() * (6-1) + 1))
 }
 dice()
 
@@ -93,22 +94,81 @@ whoIsBigger(100, 60)
     Ex. splitMe("I love coding") => returns [ "I","Love","Coding"]
 */
 
+const splitMe = function(str){
+    let splitedStr = str.split(" ")
+    console.log(splitedStr)
+}
+splitMe(`Nice to know you guys!`)
+
 /* Ex.4
     Write the function deleteOne that receives a string and a boolean. If the boolean is true it should return the string without the first letter, otherwise it should remove the last one.
 */
+
+const deleteOne = function(str, boolean){
+    if (boolean === true){
+        console.log(str.substring(1))
+    } else {
+        console.log(str.substring(0, str.length - 1))
+    }
+}
+deleteOne(`This is the string`, true)
+deleteOne(`This is the string`, false)
 
 /* Ex.5
    Write the function onlyLetters that receives a string, removes all the numbers and returns it.
    Ex.: onlyLetters("I love 123 whatever")  => returns "I love whatever"
 */
 
+const onlyLetters = function(str){
+    console.log(str.replace(/[0-9]/g, ''))
+}
+
+onlyLetters("7ul154n 4n4q 4l4y")
+
 /* Ex.6 
    Write the function isThisAnEmail that receives a string and returns true if the string is a valid email.
 */
 
+const isThisAnEmail = function(email){
+    var mailFormat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if (mailFormat.test(email) == false){
+        return false
+    } else {
+        return true
+    }
+}
+
+console.log(isThisAnEmail("bskr26@gmx.de"))
+console.log(isThisAnEmail("this is obviously not an email adress"))
+
+
+
 /* Ex.7
    Write the function whatDayIsIt that should return the current day of the week.
 */
+
+let day = new Date()
+let today = function(){
+    if (day.getDay() === 0){
+        today = `Sunday`
+    } else if (day.getDay() === 1){
+        today = `Monday`
+    } else if (day.getDay() === 2){
+        today = `Tuesday`
+    } else if (day.getDay() === 3){
+        today = `Wednesday`
+    } else if (day.getDay() === 4){
+        today = `Thursday`
+    } else if (day.getDay() === 5){
+        today = `Friday`
+    } else {
+        today = `Saturday`
+    }
+
+    console.log(`Today is ${today}`)
+}
+
+today()
 
 /* Ex.8
     Write the function rollTheDices that receives a numeric input.
@@ -118,6 +178,19 @@ whoIsBigger(100, 60)
         values: [ 3, 3, 4]
     }
 */
+
+ const rollTheDices = function(num) {
+    let dicesArr = []
+    for (let i = 0; i <= num - 1; i++){
+        dicesArr[i] = Math.floor(Math.random() * (6-1) + 1)
+    }
+    console.log("sum: ", dicesArr.reduce(function(a,b){
+        return a + b
+      }, 0)) 
+    console.log("values :", dicesArr)
+ }
+
+ rollTheDices(4)
 
 /* Ex.9
    Write the function howManyDays that receives a date and returns the number of days that has passed since that day.
@@ -133,6 +206,8 @@ whoIsBigger(100, 60)
 /* Ex.11
    Write the function deleteProp that receives an object and a string, and returns the object after deleting the property with that given name.
 */
+
+const deleteProp
 
 /* Ex.12 
     Write the function olderMovie that finds the older movie in the array.
