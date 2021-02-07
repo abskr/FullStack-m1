@@ -358,43 +358,128 @@ const movies = [
     Write the function olderMovie that finds the older movie in the array.
 */
 
+const olderMovie = function (a, b){
+    if (parseInt(a["Year"]) < parseInt(b["Year"])) {
+        return a["Title"]
+    } else if (parseInt(b["Year"]) < parseInt(a["Year"])) {
+        return b["Title"]
+    }
+}
+
+console.log(`The Movie is older "${olderMovie(movies[0], movies[1])}"` );
+
 /* Ex.13
     Write the function countMovies that returns the number of movies into the array.
 */
 
-// let countMovies = function(){
-//     let totalMovies = movies.length
-//     console.log(totalMovies)
-// }
-// countMovies()
+const countMovies = function(){
+    let totalMovies = movies.length
+    return totalMovies
+}
+
+console.log(`Total of Movie Colections: ${countMovies()}`)
 
 /* Ex.14
     Write the function onlyTitles that creates an array with only the titles of the movies.
 */
 
+const onlyTitles = function(){
+    const titleArray = []
+    for (let i = 0; i < movies.length; i++){
+        titleArray.push(movies[i]["Title"])
+    }
+    return titleArray
+}
+
+console.log(onlyTitles())
+
 /* Ex.15
    Write the function onlyThisMillennium that returns only the movies produced in this millennium.
 */
+
+const onlyThisMillennium = function(){
+    const arr = []
+    for (let i = 0; i < movies.length; i++){
+        if (movies[i]["Year"] >= 2000){
+            arr.push(movies[i]["Title"])
+        }
+    }
+    return arr
+}
+
+console.log(`Movies from Millennium: `, onlyThisMillennium())
 
 /* Ex.16 
     Write the function getMovieById that receives an id and returns the movie with the given id.
 */
 
+const getMovieById = function(id){
+    for (let i = 0; i < movies.length; i++){
+        if (movies[i]["imdbID"] === id){
+            return (movies[i]["Title"])
+        }
+    }
+}
+
+console.log(`IMDB ID: tt4154796 ---> ${getMovieById("tt4154796")}`)
+
 /* Ex.17
     Write the function sumYears that returns the sum of the years the movie has been produced.
 */
+
+const sumYears = function(){
+    let sum = 0
+    for (i of movies){
+        sum += parseInt(i["Year"])
+    }
+    return sum
+}
+console.log(sumYears())
 
 /* Ex.18
     Write the function searchMovie that receives a string and returns all the movies with that string in the title.
 */
 
+const searchMovie = function(str){
+    const arrResult = []
+    for (i of movies){
+        if (i["Title"].toLowerCase().includes(str.toLowerCase())) { //looking for match with ".includes" method
+            arrResult.push(i["Title"])
+        }
+    }
+    return arrResult
+}
+
+console.log(`Showing results for "LORD". Here's what we found. `, searchMovie("LORD"))
+
 /* Ex.19
     Write the function searchAndDivide that receives a string and returns an object with an array "match" with all the movies that contains the given string in the title, and another array "nonMatch" with all the other movies.
 */
 
+const searchAndDivide = function(str){
+    const movieObj = {
+        match: [],
+        nonMatch: []
+    }
+    for (i of movies){
+        if (i["Title"].toLowerCase().includes(str.toLowerCase())) {
+            movieObj.match.push(i["Title"])
+        } else {
+            movieObj.nonmatch.push(i["Title"])
+        }
+    }
+}
+
 /* Ex.20
    Write the function deleteX that receives a number and returns an array without the element in the given position.
 */
+
+const deleteX = function(num){
+    movies.splice(num - 1, 1)
+    return movies
+}
+
+console.log(deleteX(1))
 
 // [EXTRAS] JS Advanced
 
