@@ -15,7 +15,7 @@
    Create a variable test that contains a string.
 */
 
-const test = `This is a string, made wit backticks`
+const test = `This is a string, made with backticks`
 console.log(test)
 
 /* Ex.B
@@ -70,7 +70,7 @@ console.log(me)
 */
 
 const dice = function(){
-    console.log(Math.floor(Math.random() * (6-1) + 1))
+    console.log(Math.floor(Math.random() * (7-1) + 1))
 }
 dice()
 
@@ -196,107 +196,36 @@ today()
    Write the function howManyDays that receives a date and returns the number of days that has passed since that day.
 */
 
-let howManyDays = function(dateInput){
-    let datum = new Date(dateInput)
-    let daysPassed = day - datum
-    console.log(daysPassed)
+const howManyDays = function(date, month, year){
+    const day = new Date()
+    const dateInput = new Date(year, month - 1 , date + 1)
+    const today = day.getTime() //to get ´time from variable `day` (Ex7)
+    const oneDay = 1000 * 3600 * 24 // 1 day = 24 Hours ; 1 Hour = 3600 Seconds ; 1 Second = 1000 Miliseconds
+    return (Math.floor((today - dateInput) / oneDay))
 }
 
-howManyDays(2020/12/26)
+console.log(howManyDays(01, 01, 2021))
 
 /* Ex.10
    Write the function isTodayMyBDay that returns true if it's your birthday, false otherwise.
 */
 
-const myBDay = new Date("02-05")
 let isTodayMyBDay = function(){
-    if (day == myBDay){
-        console.log(`Today is your Birthday!`)
+    const myBday = new Date (1994, 01, 07)
+    const dateToday = new Date().getTime()
+    const dateFormat = new Date(dateToday)
+    if (myBday.getMonth() === dateFormat.getMonth && myBday.getDate() === dateFormat.getDate()){
+        return true
     } else {
-        console.log(`Nah, today's not your birthday...`)
+        return false
     }
 }
 
-isTodayMyBDay()
+console.log(`Is today is your brthday? `, isTodayMyBDay())
 
 // JS Arrays // Objs
 // NOTE: movies array is defined at the end of the file!
 
-/* Ex.11
-   Write the function deleteProp that receives an object and a string, and returns the object after deleting the property with that given name.
-*/
-
-// let deleteProp = function(obj, str){
-//     
-// }
-
-/* Ex.12 
-    Write the function olderMovie that finds the older movie in the array.
-*/
-
-/* Ex.13
-    Write the function countMovies that returns the number of movies into the array.
-*/
-
-// let countMovies = function(){
-//     let totalMovies = movies.length
-//     console.log(totalMovies)
-// }
-// countMovies()
-
-/* Ex.14
-    Write the function onlyTitles that creates an array with only the titles of the movies.
-*/
-
-/* Ex.15
-   Write the function onlyThisMillennium that returns only the movies produced in this millennium.
-*/
-
-/* Ex.16 
-    Write the function getMovieById that receives an id and returns the movie with the given id.
-*/
-
-/* Ex.17
-    Write the function sumYears that returns the sum of the years the movie has been produced.
-*/
-
-/* Ex.18
-    Write the function searchMovie that receives a string and returns all the movies with that string in the title.
-*/
-
-/* Ex.19
-    Write the function searchAndDivide that receives a string and returns an object with an array "match" with all the movies that contains the given string in the title, and another array "nonMatch" with all the other movies.
-*/
-
-/* Ex.20
-   Write the function deleteX that receives a number and returns an array without the element in the given position.
-*/
-
-// [EXTRAS] JS Advanced
-
-/* Ex.21
-  Create a function halfTree that recives the height creates an "*" half tree with that height.
-  Example:
-  halfTree(3)
-  *
-  **
-  ***
-*/
-
-/* Ex.22 
-  Create a function tree that receives the height and creates an "*" tree with that height.
-  Example: 
-  tree(3)
-    *  
-   *** 
-  *****
-*/
-
-/* Ex.23
-  Create a function isItPrime that receives a number and returns true if the number is a prime number.
-*/
-
-/* Movies array is an example array, used for the exs. Don't change it :)  */
 const movies = [
     {
       Title: "The Lord of the Rings: The Fellowship of the Ring",
@@ -411,3 +340,84 @@ const movies = [
         "https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg",
     },
   ]
+
+/* Ex.11
+   Write the function deleteProp that receives an object and a string, and returns the object after deleting the property with that given name.
+*/
+
+ const deleteProp = function(obj, str){
+     delete obj[str]
+     return obj
+ }
+
+ deleteProp(movies[0], "Type")
+ console.log(movies[0])
+ 
+
+/* Ex.12 
+    Write the function olderMovie that finds the older movie in the array.
+*/
+
+/* Ex.13
+    Write the function countMovies that returns the number of movies into the array.
+*/
+
+// let countMovies = function(){
+//     let totalMovies = movies.length
+//     console.log(totalMovies)
+// }
+// countMovies()
+
+/* Ex.14
+    Write the function onlyTitles that creates an array with only the titles of the movies.
+*/
+
+/* Ex.15
+   Write the function onlyThisMillennium that returns only the movies produced in this millennium.
+*/
+
+/* Ex.16 
+    Write the function getMovieById that receives an id and returns the movie with the given id.
+*/
+
+/* Ex.17
+    Write the function sumYears that returns the sum of the years the movie has been produced.
+*/
+
+/* Ex.18
+    Write the function searchMovie that receives a string and returns all the movies with that string in the title.
+*/
+
+/* Ex.19
+    Write the function searchAndDivide that receives a string and returns an object with an array "match" with all the movies that contains the given string in the title, and another array "nonMatch" with all the other movies.
+*/
+
+/* Ex.20
+   Write the function deleteX that receives a number and returns an array without the element in the given position.
+*/
+
+// [EXTRAS] JS Advanced
+
+/* Ex.21
+  Create a function halfTree that recives the height creates an "*" half tree with that height.
+  Example:
+  halfTree(3)
+  *
+  **
+  ***
+*/
+
+/* Ex.22 
+  Create a function tree that receives the height and creates an "*" tree with that height.
+  Example: 
+  tree(3)
+    *  
+   *** 
+  *****
+*/
+
+/* Ex.23
+  Create a function isItPrime that receives a number and returns true if the number is a prime number.
+*/
+
+/* Movies array is an example array, used for the exs. Don't change it :)  */
