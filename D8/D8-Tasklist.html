@@ -118,7 +118,10 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
           onchange event listener ad applies it as background to every list item
       */
 
-      
+      function changeTaskBackgroundColor () {
+        let bodySelector = document.querySelector("body")
+        bodySelector.style.backgroundColor = document.getElementById("colorPicker").value
+      }
 
 
 
