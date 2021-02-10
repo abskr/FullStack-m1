@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="tasklistEditor">
+        <h1>Tasklist</h1>
+        <input class="task-input" type="text" placeholder="write your task here..."/>
+        <button onclick="addTask()">add task</button>
+        <input type="checkbox" id="showUncheckedList"/><label for="showUncheckedList">hide finished task(s)</label>
+        <input type="button" value="Clear All" onclick="clearTasklist()"/>
+        <ul class="tasklist"></ul>
+    </div>
+
+    <script>
+
+        const addTask = () => {
+            if (document.querySelector(".task-input").value.length > 0){
+                let tasklist = document.querySelector(".tasklist")
+                let newTask = document.createElement("li")
+                newTask.innerText = document.querySelector(".task-input").value
+                newTask.classList.add("tasklist-item")
+                tasklist.appendChild(newTask)
+                document.querySelector(".task-input").value = null
+            } else {
+                alert("Please input your task first!")
+            }
+        }
+
+        const clearTasklist = function () {
+            if (document.querySelectorAll(".tasklist-item" > 0)){
+                if (confirm("Clear Tasklist?")){
+                    document.querySelectorAll(".tasklist-item").forEach(item => item. parentNode.removeChild(item))
+                    alert("Tasklist cleared")
+                }
+            } else {
+                alert("Tasklist is already empty")
+            }
+        }
+
+    </script>
+
+
+
+</body>
+</html>
