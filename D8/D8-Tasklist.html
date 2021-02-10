@@ -23,6 +23,17 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
        Create a CSS class for the task list item with a border, a bold text and a bigger font size
        Style every button of the page to be bigger
     */
+
+    #newTask{
+      width: 100%;
+    }
+
+    ul{
+      border: 2px;
+      font-weight: bold;
+      font-size: 2rem;
+      list-style-type: none;
+    }
     </style>
   </head>
   <body>
@@ -34,20 +45,26 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
       then press "Add new task"</span
     ><br /><br />
 
-    <input type="text" id="newTask" />
-    <input type="button" value="Add new Task" onclick="addNewTask()" />
+    <table>
+      <tr>
+        <th colspan="3"><input type="text" id="newTask" /></th>
+      </tr>
+      <tr>
+        <td><input type="button" value="Add new Task" onclick="addNewTask()" /></td>
 
     <!-- EXERCISE 3
         Create a button "Remove Last Task" to trigger the method "removeLast"
         -->
 
-    <input type="button" value="Remove the last task" onclick="removeLast()" />
+      <td><input type="button" value="Remove the last task" onclick="removeLast()" /></td>
 
     <!-- EXERCISE 4
         Create a button "Remove First Task" to trigger the method "removeFirst"
         -->
 
-    <input type="button" value="Remove the first task" onclick="removeFirst()"/>
+      <td><input type="button" value="Remove the first task" onclick="removeFirst()"/></td>
+    </tr>
+  </table>
 
     <ul id="myTaskList"></ul>
 
@@ -77,9 +94,12 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
         if (document.getElementById("newTask").value.length > 0){
           let tasklist = document.getElementById("myTaskList")
           let newTask = document.createElement("li")
+          let listCheckbox = document.createElement("input")
+          listCheckbox.setAttribute('type', 'checkbox')
           newTask.classList.add("tasklist-item")
-          newTask.innerText = document.getElementById("newTask").value
+          newTask.innerText = " " + document.getElementById("newTask").value
           tasklist.appendChild(newTask)
+          newTask.prepend(listCheckbox)
           document.getElementById("newTask").value = null
         } else {
           alert("Please input your task first!")
@@ -136,6 +156,40 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
           - Break the code into many function for semplicity 
           - Reuse the functions previously created
       */
+
+      function bubblesort() {
+        let list, i, switching, b, shouldSwitch
+        list = document.getElementById("myTaskList")
+        switching = true
+        list = document.getElementById("id01")
+        switching = true
+  /* Make a loop that will continue until
+  no switching has been done: */
+        while (switching) {
+    // Start by saying: no switching is done:
+          switching = false;
+          b = document.getElementsByTagName("li");
+    // Loop through all list items:
+          for (i = 0; i < (b.length - 1); i++) {
+      // Start by saying there should be no switching:
+            shouldSwitch = false;
+      /* Check if the next item should
+      switch place with the current item: */
+              if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+        /* If next item is alphabetically lower than current item,
+        mark as a switch and break the loop: */
+              shouldSwitch = true;
+                break;
+      }
+    }
+    if (shouldSwitch) {
+      /* If a switch has been marked, make the switch
+      and mark the switch as done: */
+      b[i].parentNode.insertBefore(b[i + 1], b[i]);
+      switching = true;
+    }
+  }
+}
     </script>
   </body>
 </html>
