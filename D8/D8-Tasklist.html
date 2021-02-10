@@ -77,6 +77,13 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
       onclick="changeTaskBackgroundColor()"
     />
 
+    <input type="color" placeholder="Color" id="textcolorPicker" />
+    <input
+      type="button"
+      value="Change text color"
+      onclick="changeTextColor()"
+    />
+
     <hr />
 
     <input type="button" value="Sort" onclick="bubblesort()" />
@@ -141,6 +148,11 @@ The have a list of tasks and can, at any time, add a new one, delete one or sort
       function changeTaskBackgroundColor () {
         let bodySelector = document.querySelector("body")
         bodySelector.style.backgroundColor = document.getElementById("colorPicker").value
+      }
+
+      function changeTextColor (){
+        let bodySelector = document.querySelector("body")
+        bodySelector.style.color = document.getElementById("textcolorPicker").value
       }
 
 
