@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        /* background-color: #f8f8f8;
+        font-family: "Poppins", sans-serif;
+        color: #1b1b1b; */
+        width: 80vw;
+        margin: 0 auto;
+        font-size: 18px;
+    }
+    
+    #bingo {
+        /* background-color: #1b1b1b; */
+        /* color: white; */
+        width: 100%;
+        margin-bottom: 20px;
+        border: solid #1b1b1b;
+        border-radius: 8px;
+    }
+
+    .numBox {
+        display: inline-block;
+        position: relative;
+        width: 23%;
+        height: 5rem;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    h6 {
+        margin: 0;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    </style>
+    <title>Bingo!</title>
+</head>
+<body>
+
+    <h1>Bingo!</h1>
+
+    <div id="bingo">
+
+    </div>
+    
+    <input type="button" value="Pick a random number!" onclick="numPicker()" />
+
+    <script>
+
+        window.onload = function() {
+
+            let bingoBoard = document.getElementById("bingo")
+
+        //generic elements
+            for (let i = 0; i <= 75; i++){
+            //create <div class="numBox">
+                const numBox = document.createElement("div")
+                numBox.className = "numBox"
+            //create <h6>i +1</h6>
+                const numDigit = document.createElement("h6")
+                numDigit.innerText = i + 1
+            //appending both elements
+                numBox.appendChild(numDigit)
+                bingoBoard.appendChild(numBox)
+            }
+        
+        }
+
+        //EXTRA: saving picked number
+        let pickedNumber = []
+        //numPicker and highlight the number
+        const numPicker = function() {
+            //generate a random number (1 - 76)
+                let randomNum = Math.floor(Math.random() * (76 - 1 + 1) + 1)
+                console.log(randomNum)
+                pickedNumber.push(randomNum)
+            
+            //array scanner
+                for (let i = 0; i <= 75; i++){
+                //make an array variable
+                    const numBoardArr = document.getElementsByTagName("h6")
+                    const numBorder = document.getElementsByClassName("numBox")
+                //highlighting the number
+                    if (parseInt(numBoardArr[i].innerText) === randomNum){
+                        numBoardArr[i].parentElement.style.cssText = "border: 2px solid; border-radius: 50%"
+                        
+                    }
+                    
+                }
+        }
+
+
+    </script>
+</body>
+</html>
